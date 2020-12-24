@@ -1,17 +1,30 @@
+<!--<script src="../../../mediumclone_vue-06-register-layout/src/router/index.js"></script>-->
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <mcv-topbar/>
+    <router-view></router-view>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
+import McvRegister from "@/views/Register";
+import McvLogin from "@/views/Login";
+import McvTopbar from "@/components/Topbar";
+import {actionTypes} from "@/store/modules/auth";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    McvTopbar,
+    McvRegister,
+    McvLogin
+  },
+  mounted() {
+    console.log('heello app')
+    this.$store.dispatch(actionTypes.getCurrentUser)
   }
 }
 </script>
